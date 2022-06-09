@@ -129,19 +129,19 @@ describe("Utilities", function() {
         
         it("Passes the original object", function() {
             const myObj = {props: "foo"};
-            Utilities.findInTree = function(obj) { assert.deepEqual(obj, myObj); return Reflect.apply(originalFindInTree, Utilities, arguments); };
+            Utilities.findInTree = function(obj) {assert.deepEqual(obj, myObj); return Reflect.apply(originalFindInTree, Utilities, arguments);};
             const result = Utilities.findInReactTree(myObj, "props");
             assert.equal(result, "foo");
         });
         it("Passes the original filter", function() {
             const myObj = {props: "foo"};
             const myFilter = "props";
-            Utilities.findInTree = function(obj, filter) { assert.deepEqual(filter, myFilter); return Reflect.apply(originalFindInTree, Utilities, arguments); };
+            Utilities.findInTree = function(obj, filter) {assert.deepEqual(filter, myFilter); return Reflect.apply(originalFindInTree, Utilities, arguments);};
             const result = Utilities.findInReactTree(myObj, myFilter);
             assert.equal(result, "foo");
 
             const myFilter2 = o => o == "foo";
-            Utilities.findInTree = function(obj, filter) { assert.deepEqual(filter, myFilter2); return Reflect.apply(originalFindInTree, Utilities, arguments); };
+            Utilities.findInTree = function(obj, filter) {assert.deepEqual(filter, myFilter2); return Reflect.apply(originalFindInTree, Utilities, arguments);};
             const result2 = Utilities.findInReactTree(myObj, myFilter2);
             assert.equal(result2, "foo");
         });
